@@ -1,25 +1,23 @@
 import React from 'react';
-import Navbar from './components/Navbar';
 import './App.css';
-import Header from './components/Header'
-import Features from './components/Features'
-import Pricing from './components/Pricing'
-import Info from './components/Info'
-import FAQ from './components/FAQ'
-import Footer from './components/Footer'
+import Login from './components/Login'
+import Register from './components/Register'
+import Home from './components/Home'
+import {BrowserRouter} from 'react-router-dom'
+import {Routes as Switch,Route} from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Header />
-      <Features />
-      <Pricing />
-      <Info />
-      <FAQ />
-      <Footer />
+      <BrowserRouter>
+      <Switch>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Switch>
+      </BrowserRouter>
     </div>
-  );
+  )
 }
 
 export default App;

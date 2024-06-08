@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Navbar.css';
 import { Link, animateScroll as scroll } from 'react-scroll';
+import {Link as RouterLink} from 'react-router-dom'
 
 const Navbar = () => {
   const scrollToTop = () => {
@@ -52,8 +53,8 @@ const Navbar = () => {
         >Contact Us</Link></li>
       </ul>
       <div className="auth-buttons">
-        <button onClick={() => alert("Login button clicked")}>Login</button>
-        <button onClick={() => alert("Register button clicked")}>Register</button>
+      <RouterLink to="/login"><button>Login</button></RouterLink>
+      <RouterLink to="/register"><button>Register</button></RouterLink>
       </div>
     </nav>
   );
