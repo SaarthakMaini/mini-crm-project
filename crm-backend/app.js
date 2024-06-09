@@ -1,15 +1,15 @@
 const express = require('express')
 const morgan = require('morgan')
 const connectDB = require("./config/db")
+const auth = require("./middlewares/auth")
 
 const app = express()
 
 app.use(express.json())
 app.use(morgan("tiny"))
+app.use(require('cors')())
 
-app.get("/",(req,res)=>{
-    res.send("sample route")
-})
+app.use("/",require("./routes/auth"))
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT,async ()=>{
