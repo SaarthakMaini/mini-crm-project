@@ -20,6 +20,7 @@ const initializeKafka = async () => {
     await initKafka()
     require('./consumers/leadConsumer');
     require('./consumers/orderConsumer');
+    require('./consumers/campaignConsumer');
 }
 initializeKafka()
 
@@ -27,7 +28,8 @@ app.use("/",authRoutes)
 app.use('/leads',leadRoutes);
 app.use('/orders', orderRoutes);
 app.use('/audience', audienceRoutes);
-app.use('/campaign', campaignRoutes);
+app.use('/campaigns', campaignRoutes);
+
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT,async ()=>{
