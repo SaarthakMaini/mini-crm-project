@@ -6,8 +6,9 @@ const leadRoutes = require('./routes/lead');
 const orderRoutes = require('./routes/order');
 const audienceRoutes = require('./routes/audience');
 const campaignRoutes = require('./routes/campaign');
-const runLeadConsumer = require('./consumers/leadConsumer');
-const runOrderConsumer = require('./consumers/orderConsumer');
+const authRoutes = require("./routes/auth")
+const { initKafka } = require('./config/kafka');
+
 
 const app = express()
 
@@ -15,7 +16,14 @@ app.use(express.json())
 app.use(morgan("tiny"))
 app.use(require('cors')())
 
-app.use("/",require("./routes/auth"))
+const initializeKafka = async () => {
+    await initKafka()
+    require('./consumers/leadConsumer');
+    require('./consumers/orderConsumer');
+}
+initializeKafka()
+
+app.use("/",authRoutes)
 app.use('/leads',leadRoutes);
 app.use('/orders', orderRoutes);
 app.use('/audience', audienceRoutes);
@@ -30,3 +38,4 @@ app.listen(PORT,async ()=>{
         console.log(error)
     }  
 })
+

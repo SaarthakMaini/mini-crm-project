@@ -1,20 +1,19 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  leadId: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Lead', 
-    required: true 
+  customerEmail: {
+    type: String,
+    required: true,
+    match: /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/
   },
-  amount: { 
-    type: Number, 
-    required: true 
+  orderDate: {
+    type: Date,
+    required: true
   },
-  date: { 
-    type: Date, 
-    required: true 
-  },
+  spending: {
+    type: Number,
+    required: true
+  }
 });
 
 module.exports = mongoose.model('Order', orderSchema);
-

@@ -39,7 +39,7 @@ router.post("/login",async (req,res) => {
         const payload = {_id: customerCheck._id}
         const token = jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:"1h"})
         const user = {...customerCheck._doc,password:undefined}
-        return res.status(200).json({token,user})
+        return res.status(200).json({token,"user":user})
     }
     catch(err){
         console.log(err)
