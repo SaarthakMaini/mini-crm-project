@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Pricing.css';
+import {Link as RouterLink} from 'react-router-dom'
 
 const Pricing = () => {
   return (
@@ -20,7 +21,7 @@ const Pricing = () => {
             <li>✔ Task Tracking</li>
             <li>✔ Basic Reporting</li>
           </ul>
-          <button className="pricing-button">Continue with Free</button>
+          <RouterLink to="/register"><button className="pricing-button">Continue with Free</button></RouterLink>
         </div>
         <div className="pricing-box">
           <h4>BASIC</h4>
@@ -33,7 +34,7 @@ const Pricing = () => {
             <li>✔ Email Campaigns</li>
             <li>✔ Advanced Reporting</li>
           </ul>
-          <button className="pricing-button">Try the Basic plan</button>
+          <RouterLink to="/register"><button className="pricing-button">Try the Basic plan</button></RouterLink>
         </div>
         <div className="pricing-box">
           <h4>PRO</h4>
@@ -46,7 +47,7 @@ const Pricing = () => {
             <li>✔ Integration with Third-Party Apps</li>
             <li>✔ Dedicated Customer Support</li>
           </ul>
-          <button className="pricing-button">Try the PRO plan</button>
+          <RouterLink to="/register"><button className="pricing-button">Try the PRO plan</button></RouterLink>
         </div>
       </div>
     </div>
